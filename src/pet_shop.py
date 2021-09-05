@@ -54,14 +54,17 @@ def customer_can_afford_pet(customers, new_pet):
      return customers ["cash"] >= new_pet["price"]
 
 def sell_pet_to_customer(pet_shop, pets, customers):
-     def get_customer_pet_count(customers):
-        def get_pets_sold(pet_status):
-            def get_customer_cash(customers):
-                def get_total_cash(pet_shop):
-                    return pet_shop["admin"]["total_cash"]
-                return customers["cash"]
-            return pet_status["admin"]["pets_sold"]
-        return len(customers["pets"])
+    if pets != None and customer_can_afford_pet(customers, pets):
+        add_pet_to_customer(customers, pets)
+        increase_pets_sold(pet_shop, 1)
+        remove_customer_cash(customers, pets["price"])
+        add_or_remove_cash(pet_shop, pets["price"])
+
+    
+   
+                    
+
+
     
 
 
